@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Schoolarship;
 
-class SchoolarshipController extends Controller
+class SchoolarshipAPIController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class SchoolarshipController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $students = Schoolarship::all();
+        return response()->json($students, 200);
     }
 
     /**
@@ -35,11 +37,7 @@ class SchoolarshipController extends Controller
      */
     public function store(Request $request)
     {
-        $code = $request->all();
-        $data = Schoolarship::where('code', $code['code'])->get();
-        return view('content')->with([
-            'students' => $data
-        ]);
+        //
     }
 
     /**
@@ -50,7 +48,8 @@ class SchoolarshipController extends Controller
      */
     public function show($code)
     {
-        echo 'Ini adalah ' . $code;
+        $student = Schoolarship::where('code',$code)->get();
+        return response()->json($student, 200);
     }
 
     /**

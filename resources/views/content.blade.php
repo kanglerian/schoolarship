@@ -12,59 +12,40 @@
 </head>
 
 <body class="bg-[#E6E7E8]">
-    <div class="fixed inset-0 z-[-1] flex justify-center items-center px-4">
-        <img src="./img/indonesia.png" alt="" class="h-auto md:h-80 opacity-70">
-    </div>
-    <section class="flex flex-col items-center justify-center h-screen gap-5">
-        <div class="flex flex-col items-center justify-center text-center space-y-6">
-            <img src="./img/lp3i.svg" alt="" class="h-16" data-aos="fade-down">
-            <div class="space-y-2">
-                <h1 id="header" class="text-2xl font-bold text-slate-900" data-aos="fade-down" data-aos-delay="50">
-                    Cek Beasiswa Disini!</h1>
-                <p id="subHeader" class="text-sm text-slate-700" data-aos="fade-down" data-aos-delay="100">Silahkan isi
-                    dengan kode beasiswa yang dimiliki:</p>
-            </div>
-            <div class="flex justify-center items-center mx-4" data-aos="fade-down" data-aos-delay="150">
-                <video id="scanner" class="w-full md:w-1/3 rounded-xl border-4 border-gray-100"></video>
-                <form id="cekBeasiswa" action="{{ route('schoolarship.store') }}" method="POST">
-                  @csrf
-                  <input type="hidden" id="code" name="code">
-                </form>
-            </div>
-            <div class="flex gap-2 text-sm">
-                <input type="text" onchange="cari()"
-                    class="px-4 py-2 bg-white text-slate-700 rounded-lg outline-slate-200" placeholder="Type in here..."
-                    data-aos="fade-down" data-aos-delay="150" autofocus>
-                <button onclick="cari()" class="bg-sky-500 text-white px-4 rounded-lg" data-aos="fade-down"
-                    data-aos-delay="200"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
-            </div>
-        </div>
-        <div class="w-full md:w-2/5 px-5">
-            <div id="my-node" onclick="download()" role="button"
-                class="hidden bg-white border border-slate-300 bg-center bg-cover w-full">
-                <div class="flex flex-col md:flex-row text-center md:text-left justify-between items-center p-5">
-                    <div class="space-y-3">
-                        <img src="./img/lp3i.svg" class="inline h-12">
-                        <h1 class="font-bold text-lg">Penerima Beasiswa</h1>
-                        <ul class="space-y-1">
-                            <li id="name"></li>
-                            <li id="school" class="text-sm"></li>
-                        </ul>
+    @forelse ($students as $student)
+        <div class="h-screen flex items-center justify-center">
+            <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
+                <h1>Selamat, Anda Mendapatkan Beasiswa!</h1>
+                <div id="my-node" onclick="download()" role="button"
+                    class="bg-white border border-slate-300 bg-center bg-cover w-full">
+                    <div class="flex flex-col md:flex-row text-center md:text-left justify-between items-center p-5">
+                        <div class="space-y-3">
+                            <img src="./img/lp3i.svg" class="inline h-12">
+                            <h1 class="font-bold text-lg">Penerima Beasiswa</h1>
+                            <ul class="space-y-1">
+                                <li>{{ $student->name }}</li>
+                                <li class="text-sm">{{ $student->school }}</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <input type="hidden" id="isian" value="{{ $student->code }}">
+                            <canvas id="canvas" class="h-28"></canvas>
+                            <p class="text-sm">{{ $student->code }}</p>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center gap-2">
-                        <canvas id="canvas" class="h-28"></canvas>
-                        <p class="text-sm" id="codeBeasiswa"></p>
-                    </div>
+                    <footer class="bg-slate-800 text-white text-center text-xs px-5 py-1">
+                        <div class="flex justify-between">
+                            <p>PMB 2023/2024</p>
+                            <p class="flex gap-2"><span>lp3i.tasik</span> | <span>081313608558</span></p>
+                        </div>
+                    </footer>
                 </div>
-                <footer class="bg-slate-800 text-white text-center text-xs px-5 py-1">
-                    <div class="flex justify-between">
-                        <p>PMB 2023/2024</p>
-                        <p class="flex gap-2"><span>lp3i.tasik</span> | <span>081313608558</span></p>
-                    </div>
-                </footer>
             </div>
         </div>
-    </section>
+    @empty
+        <p>Tidak ada</p>
+    @endforelse
+
 
     <script src="{{ asset('js/dom-to-image.min.js') }}"></script>
     <script src="{{ asset('js/qrcode.js') }}"></script>
@@ -79,6 +60,13 @@
         let school = document.getElementById('school');
         let codeBeasiswa = document.getElementById('codeBeasiswa');
         let canvas = document.getElementById('canvas');
+        let isian = document.getElementById('isian');
+
+        QRCode.toCanvas(canvas, `${isian.value}`, function(error) {
+            if (error) console.error(error)
+            $('#my-node').show();
+        })
+
 
         const qrScanner = new QrScanner(
             videoElem,

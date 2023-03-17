@@ -18,6 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('schoolarship','SchoolarshipController');
-Route::resource('participant','ParticipantController');
-Route::resource('absen','AbsenController');
+Route::resource('schoolarship','API\SchoolarshipAPIController');
