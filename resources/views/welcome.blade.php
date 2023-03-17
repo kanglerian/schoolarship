@@ -17,8 +17,8 @@
     </div>
     <section class="flex flex-col items-center justify-center h-screen gap-5">
         <div class="flex flex-col items-center justify-center text-center space-y-6">
-            <img src="./img/lp3i.svg" alt="" class="h-16" data-aos="fade-down">
-            <div class="space-y-2">
+            <img src="./img/lp3i.svg" alt="" class="hidden md:block h-16" data-aos="fade-down">
+            <div class="hidden md:block space-y-2">
                 <h1 id="header" class="text-2xl font-bold text-slate-900" data-aos="fade-down" data-aos-delay="50">
                     Cek Beasiswa Disini!</h1>
                 <p id="subHeader" class="text-sm text-slate-700" data-aos="fade-down" data-aos-delay="100">Silahkan isi
@@ -31,7 +31,7 @@
                   <input type="hidden" id="code" name="code">
                 </form>
             </div>
-            <div class="flex gap-2 text-sm">
+            <div class="hidden md:block flex gap-2 text-sm">
                 <input type="text" onchange="cari()"
                     class="px-4 py-2 bg-white text-slate-700 rounded-lg outline-slate-200" placeholder="Type in here..."
                     data-aos="fade-down" data-aos-delay="150" autofocus>
