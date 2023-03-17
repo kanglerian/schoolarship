@@ -79,6 +79,7 @@
                     });
             }, {
                 maxScansPerSecond: 2,
+                highlightScanRegion: true
             }
         );
         qrScanner.start();
