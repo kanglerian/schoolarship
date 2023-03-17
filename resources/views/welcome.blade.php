@@ -31,38 +31,6 @@
                   <input type="hidden" id="code" name="code">
                 </form>
             </div>
-            <div class="hidden md:block flex gap-2 text-sm">
-                <input type="text" onchange="cari()"
-                    class="px-4 py-2 bg-white text-slate-700 rounded-lg outline-slate-200" placeholder="Type in here..."
-                    data-aos="fade-down" data-aos-delay="150" autofocus>
-                <button onclick="cari()" class="bg-sky-500 text-white px-4 rounded-lg" data-aos="fade-down"
-                    data-aos-delay="200"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
-            </div>
-        </div>
-        <div class="w-full md:w-2/5 px-5">
-            <div id="my-node" onclick="download()" role="button"
-                class="hidden bg-white border border-slate-300 bg-center bg-cover w-full">
-                <div class="flex flex-col md:flex-row text-center md:text-left justify-between items-center p-5">
-                    <div class="space-y-3">
-                        <img src="./img/lp3i.svg" class="inline h-12">
-                        <h1 class="font-bold text-lg">Penerima Beasiswa</h1>
-                        <ul class="space-y-1">
-                            <li id="name"></li>
-                            <li id="school" class="text-sm"></li>
-                        </ul>
-                    </div>
-                    <div class="flex flex-col items-center gap-2">
-                        <canvas id="canvas" class="h-28"></canvas>
-                        <p class="text-sm" id="codeBeasiswa"></p>
-                    </div>
-                </div>
-                <footer class="bg-slate-800 text-white text-center text-xs px-5 py-1">
-                    <div class="flex justify-between">
-                        <p>PMB 2023/2024</p>
-                        <p class="flex gap-2"><span>lp3i.tasik</span> | <span>081313608558</span></p>
-                    </div>
-                </footer>
-            </div>
         </div>
     </section>
 
