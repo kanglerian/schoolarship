@@ -90,7 +90,7 @@
                     });
             }, {
                 maxScansPerSecond: 2,
-                highlightScanRegion: false,
+                highlightScanRegion: true,
                 highlightCodeOutline: true
             }
         );
