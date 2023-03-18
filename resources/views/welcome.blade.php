@@ -11,19 +11,19 @@
     <title>Document</title>
 </head>
 
-<body class="bg-[#E6E7E8]">
-    <div class="fixed inset-0 z-[-1] flex justify-center items-center px-4">
-        <img src="./img/indonesia.png" alt="" class="h-auto md:h-80 opacity-70">
-    </div>
+<body class="bg-white">
     <div>
-      <div data-aos="fade-down" data-aos-delay="150">
-          <video id="scanner" class="w-full md:w-1/3 rounded-xl border-4 border-gray-100 mx-auto"></video>
-          <form id="cekBeasiswa" action="{{ route('schoolarship.store') }}" method="POST">
-              @csrf
-              <input type="hidden" id="code" name="code">
-          </form>
-      </div>
-  </div>
+        <div class="flex flex-col items-center justify-center gap-2" data-aos="fade-down" data-aos-delay="150">
+            <video id="scanner" class="w-full md:w-1/3 mx-auto rounded-lg"></video>
+            <form id="cekBeasiswa" action="{{ route('schoolarship.store') }}" method="POST">
+                @csrf
+                <div class="flex items-center justify-center gap-3">
+                    <input type="text" id="code" name="code" class="text-sm px-3 py-2 w-[230px] rounded-lg border border-slate-300 outline-slate-300" placeholder="Tulis kode beasiswa disini..." autofocus>
+                    <button type="submit" class="bg-sky-500 px-4 py-2 rounded-lg text-sm text-white" onclick="cari()"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script src="{{ asset('js/dom-to-image.min.js') }}"></script>
     <script src="{{ asset('js/qrcode.js') }}"></script>

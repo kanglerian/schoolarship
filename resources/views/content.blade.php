@@ -134,16 +134,13 @@
                 });
         }
         const download = async () => {
-            let getName = document.getElementById('name');
-            let name = getName.innerText.replace(" ", "-").toLowerCase();
-            console.log(name);
             var node = document.getElementById('my-node');
             domtoimage.toJpeg(document.getElementById('my-node'), {
                     quality: 1
                 })
                 .then(function(dataUrl) {
                     var link = document.createElement('a');
-                    link.download = `voucher-${name}.jpeg`;
+                    link.download = `voucher.jpeg`;
                     link.href = dataUrl;
                     link.click();
                 });
