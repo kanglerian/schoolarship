@@ -12,15 +12,22 @@
 </head>
 
 <body class="bg-white">
-    <div>
-        <div class="flex flex-col items-center justify-center gap-2" data-aos="fade-down" data-aos-delay="150">
-            <video id="scanner" class="w-full md:w-1/3 mx-auto rounded-lg"></video>
+    <div class="container mx-auto">
+        <div class="flex flex-col items-center justify-center gap-2 md:h-screen" data-aos="fade-down" data-aos-delay="150">
+            <video id="scanner" class="w-full md:w-1/3 mx-auto md:rounded-lg"></video>
             <form id="cekBeasiswa" action="{{ route('schoolarship.store') }}" method="POST">
                 @csrf
-                <div class="flex items-center justify-center gap-3">
-                    <input type="text" id="code" name="code" class="text-sm px-3 py-2 w-[230px] rounded-lg border border-slate-300 outline-slate-300" placeholder="Tulis kode beasiswa disini..." autofocus>
-                    <button type="submit" class="bg-sky-500 px-4 py-2 rounded-lg text-sm text-white" onclick="cari()"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+                <div class="flex items-center justify-center gap-3 py-5">
+                    <input type="text" id="code" name="code"
+                        class="text-sm px-3 py-2 w-[230px] rounded-lg border border-slate-300 outline-slate-300"
+                        placeholder="Tulis kode beasiswa disini..." autofocus>
+                    <button type="submit" class="bg-sky-500 px-4 py-2 rounded-lg text-sm text-white"
+                        onclick="cari()"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
                 </div>
+                <hr>
+                <footer class="text-center text-slate-600 text-sm my-3">
+                    <p>Copyright © 2023 Politeknik LP3I Kampus Tasikmalaya</p>
+                </footer>
             </form>
         </div>
     </div>
