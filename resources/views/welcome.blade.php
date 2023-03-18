@@ -13,8 +13,16 @@
 
 <body class="bg-white">
     <div class="container mx-auto">
-        <div class="flex flex-col items-center justify-center gap-2 md:h-screen" data-aos="fade-down" data-aos-delay="150">
-            <video id="scanner" class="w-full md:w-1/3 mx-auto md:rounded-lg"></video>
+        <div class="flex flex-col items-center justify-center gap-2 h-screen" data-aos="fade-down" data-aos-delay="150">
+            <div id="alertInfo" class="hidden rounded-lg absolute z-10 top-10">
+                <div id="alertContent"
+                    class="flex items-center justify-between p-4 rounded-lg shadow bg-red-500 text-white gap-5">
+
+                </div>
+            </div>
+            <div data-aos="fade-down" data-aos-delay="100">
+                <video id="scanner" class="w-full md:w-1/3 shadow mx-auto my-auto md:rounded-lg"></video>
+            </div>
             <form id="cekBeasiswa" action="{{ route('schoolarship.store') }}" method="POST">
                 @csrf
                 <div class="flex items-center justify-center gap-3 py-5">
@@ -25,7 +33,7 @@
                         onclick="cari()"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
                 </div>
                 <hr>
-                <footer class="text-center text-slate-600 text-sm my-3">
+                <footer class="text-center text-slate-500 text-xs my-3">
                     <p>Copyright © 2023 Politeknik LP3I Kampus Tasikmalaya</p>
                 </footer>
             </form>
@@ -41,6 +49,7 @@
     <script>
         let videoElem = document.getElementById('scanner');
         let code = document.getElementById('code');
+        let alertInfo = document.getElementById('alertInfo');
 
         const qrScanner = new QrScanner(
             videoElem,
@@ -50,16 +59,30 @@
                         if (response.data.length > 0) {
                             let student = response.data[0];
                             code.value = student.code;
-                            $('#scanner').removeClass('border-red-400');
-                            $('#scanner').removeClass('border-gray-100');
-                            $('#scanner').addClass('border-emerald-400');
-                            $('#my-node').show();
+                            $('#alertContent').removeClass('bg-red-500');
+                            $('#alertContent').addClass('bg-emerald-500');
+                            $('#alertContent').html(
+                                `
+                                <div class="flex items-center gap-3 text-sm">
+                                    <span class="bg-slate-100 px-2 py-1 text-emerald-500 rounded"><i class="fa-solid fa-check"></i></span>
+                                    <span>Data ditemukan!</span>
+                                </div>
+                                <button class="hover:bg-emerald-600 px-2 py-1 rounded"><i class="fa-solid fa-xmark"></i></button>
+                                `);
+                            $('#alertInfo').show();
                             $('#cekBeasiswa').submit();
                         } else {
-                            $('#scanner').removeClass('border-gray-100');
-                            $('#scanner').removeClass('border-emerald-400');
-                            $('#scanner').addClass('border-red-400');
-                            $('#my-node').hide();
+                            $('#alertContent').removeClass('bg-emerald-500');
+                            $('#alertContent').addClass('bg-red-500');
+                            $('#alertContent').html(
+                                `
+                                <div class="flex items-center gap-3 text-sm">
+                                    <span class="bg-slate-100 px-2 py-1 text-red-500 rounded"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                                    <span>Data tidak ditemukan</span>
+                                </div>
+                                <button onclick="tutup()" class="hover:bg-red-600 px-2 py-1 rounded"><i class="fa-solid fa-xmark"></i></button>
+                                `);
+                            $('#alertInfo').show();
                         }
                     })
                     .catch((error) => {
@@ -67,10 +90,15 @@
                     });
             }, {
                 maxScansPerSecond: 2,
-                highlightScanRegion: true
+                highlightScanRegion: false,
+                highlightCodeOutline: true
             }
         );
         qrScanner.start();
+
+        const tutup = () => {
+            $('#alertInfo').hide();
+        }
     </script>
     <script>
         AOS.init({
