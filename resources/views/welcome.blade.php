@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Politeknik LP3I Kampus Tasikmalaya adalah perguruan tinggi swasta di Kota Tasikmalaya berbasis pendidikan vokasi yaitu 70% praktek dan 30% teori. Mahasiswa/i Politeknik LP3I Kampus Tasikmalaya di semester 6 akan ditempatkan bekerja oleh bagian Career Center di perusahaan relasi. Mandiri, tepat dan cepat kerja!">
+    <meta name="keywords"
+        content="Kuliah, Penempatan Kerja, Kampus Vokasi, Beasiswa Pendidikan, Perguruan Tinggi, Politeknik, LP3I, Kota Tasikmalaya, Vokasi, Kuliah Praktek">
+    <meta name="author" content="Politeknik LP3I Kampus Tasikmalaya">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>Politeknik LP3I Kampus Tasikmalaya</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}">
 </head>
 
 <body class="bg-white">
