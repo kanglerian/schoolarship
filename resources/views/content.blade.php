@@ -17,14 +17,18 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}">
 </head>
 
-<body class="bg-[#E6E7E8]">
+<body class="bg-slate-100">
     @forelse ($students as $student)
         <div class="h-screen flex items-center justify-center">
             <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
-                <h1>Selamat, Anda Mendapatkan Beasiswa!</h1>
+                <div class="text-center mb-8">
+                    <a href="https://politekniklp3i-tasikmalaya.ac.id/" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-lg"  data-aos="fade-down" data-aos-delay="100"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+                    <h1 class="font-bold text-2xl text-slate-900 mt-5" data-aos="fade-down" data-aos-delay="150">Selamat, anda telah mendapatkan beasiswa!</h1>
+                    <p class="text-slate-700" data-aos="fade-down" data-aos-delay="200">Tukarkan voucher ini ke Politeknik LP3I Kampus Tasikmalaya.</p>
+                </div>
                 <div id="my-node" onclick="download()" role="button"
-                    class="bg-white border border-slate-300 bg-center bg-cover w-full">
-                    <div class="flex flex-col md:flex-row text-center md:text-left justify-between items-center p-5">
+                    class="w-full shadow-lg rounded-lg">
+                    <div class="bg-white flex flex-col md:flex-row text-center md:text-left justify-between items-center p-5 rounded-t-lg">
                         <div class="space-y-3">
                             <img src="./img/lp3i.svg" class="inline h-12">
                             <h1 class="font-bold text-lg">Penerima Beasiswa</h1>
@@ -39,7 +43,7 @@
                             <p class="text-sm">{{ $student->code }}</p>
                         </div>
                     </div>
-                    <footer class="bg-slate-800 text-white text-center text-xs px-5 py-1">
+                    <footer class="bg-slate-800 text-white text-center text-xs px-5 py-1 rounded-b-lg">
                         <div class="flex justify-between">
                             <p>PMB 2023/2024</p>
                             <p class="flex gap-2"><span>lp3i.tasik</span> | <span>081313608558</span></p>

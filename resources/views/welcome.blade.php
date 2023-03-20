@@ -17,7 +17,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}">
 </head>
 
-<body class="bg-white">
+<body class="bg-slate-100">
     <div class="container mx-auto">
         <div class="flex flex-col items-center justify-center gap-2 h-screen" data-aos="fade-down" data-aos-delay="150">
             <div id="alertInfo" class="hidden rounded-lg absolute z-10 top-10">
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div data-aos="fade-down" data-aos-delay="100">
-                <video id="scanner" class="w-full md:w-1/3 shadow mx-auto my-auto md:rounded-lg"></video>
+                <video id="scanner" class="w-full md:w-1/3 shadow-lg mx-auto my-auto md:rounded-lg"></video>
             </div>
             <form id="cekBeasiswa" action="{{ route('schoolarship.store') }}" method="POST">
                 @csrf
