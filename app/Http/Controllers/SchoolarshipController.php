@@ -24,7 +24,7 @@ class SchoolarshipController extends Controller
      */
     public function create()
     {
-        //
+        return view('content');
     }
 
     /**
@@ -36,9 +36,16 @@ class SchoolarshipController extends Controller
     public function store(Request $request)
     {
         $code = $request->all();
-        $data = Schoolarship::where('code', $code['code'])->get();
+        $data = Schoolarship::where('code', $code['code'])->first();
+        if ($data !== null) {
+            $student = Schoolarship::findOrFail($data->id);
+            $content = [
+                'status' => true
+            ];
+            $student->update($content);
+        }
         return view('content')->with([
-            'students' => $data
+          'student' => $data
         ]);
     }
 

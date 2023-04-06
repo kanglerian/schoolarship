@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Participant;
+use App\Imports\ParticipantImport;
+use App\Exports\ParticipantExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ParticipantController extends Controller
 {
@@ -14,8 +16,7 @@ class ParticipantController extends Controller
      */
     public function index()
     {
-        $participants = Participant::all();
-        return response()->json($participants, 200);
+        return view('participant');
     }
 
     /**
@@ -25,7 +26,7 @@ class ParticipantController extends Controller
      */
     public function create()
     {
-        //
+        return Excel::download(new ParticipantExport, 'result.xlsx');
     }
 
     /**
@@ -36,7 +37,8 @@ class ParticipantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Excel::import(new ParticipantImport, $request->file);
+        return redirect('participant');
     }
 
     /**
@@ -47,8 +49,6 @@ class ParticipantController extends Controller
      */
     public function show($code)
     {
-        $participant = Participant::where('code',$code)->get();
-        return response()->json($participant, 200);
     }
 
     /**

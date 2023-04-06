@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\SchoolarshipController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'SchoolarshipController@index');
 
 Route::resource('schoolarship', 'SchoolarshipController');
+Route::resource('participant', 'ParticipantController');

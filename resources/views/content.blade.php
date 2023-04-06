@@ -18,44 +18,53 @@
 </head>
 
 <body class="bg-slate-100">
-    @forelse ($students as $student)
+    {{-- @if ($student ?? '' !== null) --}}
         <div class="h-screen flex items-center justify-center">
             <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
-                <div class="text-center mb-8">
-                    <a href="https://politekniklp3i-tasikmalaya.ac.id/" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-lg"  data-aos="fade-down" data-aos-delay="100"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
-                    <h1 class="font-bold text-2xl text-slate-900 mt-5" data-aos="fade-down" data-aos-delay="150">Selamat, anda telah mendapatkan beasiswa!</h1>
-                    <p class="text-slate-700" data-aos="fade-down" data-aos-delay="200">Tukarkan voucher ini ke Politeknik LP3I Kampus Tasikmalaya.</p>
+                <div class="text-center mb-8 space-y-2">
+                    <a href="{{ route('schoolarship.index') }}"
+                        class="inline-block bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-lg mb-2" data-aos="fade-down"
+                        data-aos-delay="100"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+                    <h1 class="font-bold text-2xl text-slate-900 mt-5" data-aos="fade-down" data-aos-delay="150">
+                        Selamat,
+                        anda telah mendapatkan beasiswa!</h1>
+                    <p class="text-slate-700" data-aos="fade-down" data-aos-delay="200">Download dan tukarkan voucher ini ke
+                        Politeknik
+                        LP3I Kampus Tasikmalaya.</p>
+                    <button onclick="download()" data-aos="fade-down" data-aos-delay="250" class="bg-red-500 text-white px-4 py-2 text-sm">Klik voucher untuk download <i class="fa-solid fa-arrow-down"></i></button>
                 </div>
-                <div id="my-node" onclick="download()" role="button"
-                    class="w-full shadow-lg rounded-lg">
-                    <div class="bg-white flex flex-col md:flex-row text-center md:text-left justify-between items-center p-5 rounded-t-lg">
+                <div id="my-node" onclick="download()" role="button" class="w-full shadow-lg rounded-lg">
+                    <div
+                        class="bg-white flex flex-col md:flex-row text-center md:text-left justify-between items-center p-5 rounded-t-lg">
                         <div class="space-y-3">
-                            <img src="./img/lp3i.svg" class="inline h-12">
+                            <img src="{{ asset('/img/lp3i.svg') }}" class="inline h-12">
                             <h1 class="font-bold text-lg">Penerima Beasiswa</h1>
                             <ul class="space-y-1">
-                                <li>{{ $student->name }}</li>
-                                <li class="text-sm">{{ $student->school }}</li>
+                                <li>{{ $student->name ?? 'Nama lengkap disini' }}</li>
+                                <li class="text-sm">{{ $student->school ?? 'Nama sekolah disini' }}</li>
                             </ul>
                         </div>
                         <div class="flex flex-col items-center gap-2">
-                            <input type="hidden" id="isian" value="{{ $student->code }}">
+                            <input type="hidden" id="isian" value="{{ $student->code ?? 'BC0023231' }}">
                             <canvas id="canvas" class="h-28"></canvas>
-                            <p class="text-sm">{{ $student->code }}</p>
+                            <p class="text-sm">{{ $student->code ?? 'BC0023231' }}</p>
                         </div>
                     </div>
-                    <footer class="bg-slate-800 text-white text-center text-xs px-5 py-1 rounded-b-lg">
-                        <div class="flex justify-between">
-                            <p>PMB 2023/2024</p>
-                            <p class="flex gap-2"><span>lp3i.tasik</span> | <span>081313608558</span></p>
+                    <footer class="bg-red-500 text-white text-center text-[10px] py-1 px-2">
+                        <p>Kuota hanya untuk 30 orang pertama saja!</p>
+                    </footer>
+                    <footer class="bg-slate-800 text-white text-center text-[10px] px-5 py-1 rounded-b-lg">
+                        <div class="flex flex-col items-center">
+                            <p>Jl. Ir. H. Juanda No.106, Panglayungan, Kec. Cipedes Kota Tasikmalaya, Jawa Barat 46151</p>
+                            <p class="flex gap-2"><span>@lp3i.tasik</span> | <span>081313608558</span></p>
                         </div>
                     </footer>
                 </div>
             </div>
         </div>
-    @empty
+    {{-- @else --}}
         <p>Tidak ada</p>
-    @endforelse
-
+    {{-- @endif --}}
 
     <script src="{{ asset('js/dom-to-image.min.js') }}"></script>
     <script src="{{ asset('js/qrcode.js') }}"></script>

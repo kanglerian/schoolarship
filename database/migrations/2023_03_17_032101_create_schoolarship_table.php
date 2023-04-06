@@ -18,9 +18,7 @@ class CreateSchoolarshipTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('school');
-            $table->string('major');
-            $table->string('presenter');
-            $table->string('whatsapp');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
