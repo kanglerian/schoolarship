@@ -19,7 +19,7 @@
 
 <body class="bg-slate-100">
     <div class="container mx-auto">
-        <div class="flex flex-col items-center justify-center gap-3 h-screen" data-aos="fade-down" data-aos-delay="150">
+        <div class="flex flex-col items-center justify-center gap-3 md:h-screen" data-aos="fade-down" data-aos-delay="150">
             <div class="flex flex-col items-center gap-2 text-center mb-3 px-4">
                 <img src="{{ asset('img/lp3i.svg') }}" alt="Politeknik LP3I Kampus Tasikmalaya" class="h-16">
                 <h1 class="text-2xl font-bold text-slate-900 uppercase">Beasiswa Politeknik LP3I Kampus Tasikmalaya</h1>
