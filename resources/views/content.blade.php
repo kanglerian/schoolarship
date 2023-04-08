@@ -18,7 +18,7 @@
 </head>
 
 <body class="bg-slate-100">
-    {{-- @if ($student ?? '' !== null) --}}
+    @if ($student !== null)
         <div class="h-screen flex items-center justify-center">
             <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
                 <div class="text-center mb-8 space-y-2">
@@ -31,7 +31,7 @@
                     <p class="text-slate-700" data-aos="fade-down" data-aos-delay="200">Download dan tukarkan voucher ini ke
                         Politeknik
                         LP3I Kampus Tasikmalaya.</p>
-                    <button onclick="download()" data-aos="fade-down" data-aos-delay="250" class="bg-red-500 text-white px-4 py-2 text-sm">Klik voucher untuk download <i class="fa-solid fa-arrow-down"></i></button>
+                    <button onclick="download()" data-aos="fade-down" data-aos-delay="250" class="bg-emerald-500 text-white rounded-lg px-4 py-2 text-sm">Klik voucher untuk download <i class="fa-solid fa-arrow-down"></i></button>
                 </div>
                 <div id="my-node" onclick="download()" role="button" class="w-full shadow-lg rounded-lg">
                     <div
@@ -40,14 +40,14 @@
                             <img src="{{ asset('/img/lp3i.svg') }}" class="inline h-12">
                             <h1 class="font-bold text-lg">Penerima Beasiswa</h1>
                             <ul class="space-y-1">
-                                <li>{{ $student->name ?? 'Nama lengkap disini' }}</li>
-                                <li class="text-sm">{{ $student->school ?? 'Nama sekolah disini' }}</li>
+                                <li>{{ $student->name == '' ? 'Your full name' : $student->name }}</li>
+                                <li class="text-sm">{{ $student->school == '' ? 'Your school' : $student->school }}</li>
                             </ul>
                         </div>
                         <div class="flex flex-col items-center gap-2">
-                            <input type="hidden" id="isian" value="{{ $student->code ?? 'BC0023231' }}">
+                            <input type="hidden" id="isian" value="{{ $student->code == '' ? '0000000001' : $student->code }}">
                             <canvas id="canvas" class="h-28"></canvas>
-                            <p class="text-sm">{{ $student->code ?? 'BC0023231' }}</p>
+                            <p class="text-sm">{{ $student->code == '' ? '0000000001' : $student->code }}</p>
                         </div>
                     </div>
                     <footer class="bg-red-500 text-white text-center text-[10px] py-1 px-2">
@@ -62,9 +62,21 @@
                 </div>
             </div>
         </div>
-    {{-- @else --}}
-        <p>Tidak ada</p>
-    {{-- @endif --}}
+    @else
+    <div class="h-screen flex items-center justify-center">
+        <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
+            <div class="text-center mb-8 space-y-2">
+                <a href="{{ route('schoolarship.index') }}"
+                    class="inline-block bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-lg mb-2" data-aos="fade-down"
+                    data-aos-delay="100"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+                <h1 class="font-bold text-2xl text-slate-900 mt-5" data-aos="fade-down" data-aos-delay="150">
+                    Data Penerima Beasiswa Tidak Ditemukan</h1>
+                <p class="text-slate-700" data-aos="fade-down" data-aos-delay="200">Isi kode beasiswa dengan benar, hubungi Panitia PMB Politeknik LP3I Kampus Tasikmalaya.</p>
+                <a href="https://bit.ly/InfoPMBLP3ITasik" data-aos="fade-down" data-aos-delay="250" class="inline-block bg-emerald-500 text-white rounded-lg px-4 py-2 text-sm"><i class="fa-brands fa-whatsapp"></i> Hubungi kami!</a>
+            </div>
+        </div>
+    </div>
+    @endif
 
     <script src="{{ asset('js/dom-to-image.min.js') }}"></script>
     <script src="{{ asset('js/qrcode.js') }}"></script>

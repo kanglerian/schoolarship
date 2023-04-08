@@ -15,9 +15,9 @@ class CreateSchoolarshipTable extends Migration
     {
         Schema::create('schoolarship', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('name');
-            $table->string('school');
+            $table->string('code')->unique();
+            $table->string('name')->nullable();
+            $table->string('school')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
