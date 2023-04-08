@@ -20,12 +20,12 @@
 <body class="bg-slate-100">
     <div class="container mx-auto">
         <div class="flex flex-col items-center justify-center gap-3 md:h-screen" data-aos="fade-down" data-aos-delay="150">
-            <div class="flex flex-col items-center gap-2 text-center mb-3 px-4">
+            <div class="flex flex-col items-center gap-2 text-center py-3">
                 <img src="{{ asset('img/lp3i.svg') }}" alt="Politeknik LP3I Kampus Tasikmalaya" class="h-16">
                 <h1 class="text-2xl font-bold text-slate-900 uppercase">Beasiswa Politeknik LP3I Kampus Tasikmalaya</h1>
                 <p class="text-slate-700 text-sm">Cek status beasiswa kamu dengan scan QRCode atau tuliskan kode. Lalu tukarkan kode beasiswamu ini ke Politeknik LP3I Kampus Tasikmalaya.</p>
             </div>
-            <div data-aos="fade-down" data-aos-delay="100">
+            <div data-aos="fade-down" data-aos-delay="100" class="px-4">
                 <video id="scanner" class="w-full md:w-1/3 shadow-lg mx-auto my-auto md:rounded-lg"></video>
             </div>
             <form id="cekBeasiswa" action="{{ route('schoolarship.store') }}" method="POST">
