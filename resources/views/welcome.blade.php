@@ -25,9 +25,9 @@
                 <h1 class="text-2xl font-bold text-slate-900 uppercase">Beasiswa Politeknik LP3I Kampus Tasikmalaya</h1>
                 <p class="text-slate-700 text-sm">Cek status beasiswa kamu dengan scan QRCode atau tuliskan kode. Lalu tukarkan kode beasiswamu ini ke Politeknik LP3I Kampus Tasikmalaya.</p>
             </div>
-            <div data-aos="fade-down" data-aos-delay="100" class="px-4">
+            {{-- <div data-aos="fade-down" data-aos-delay="100" class="px-4">
                 <video id="scanner" class="w-full md:w-1/3 shadow-lg mx-auto my-auto md:rounded-lg"></video>
-            </div>
+            </div> --}}
             <form id="cekBeasiswa" action="{{ route('schoolarship.store') }}" method="POST">
                 @csrf
                 <div class="flex items-center justify-center gap-3 py-5">
@@ -59,7 +59,9 @@
         const qrScanner = new QrScanner(
             videoElem,
             result => {
-                axios.get(`https://schoolarship.politekniklp3i-tasikmalaya.ac.id/api/schoolarship/${result.data}`)
+                axios.post(`https://schoolarship.politekniklp3i-tasikmalaya.ac.id/api/schoolarship`,{
+                    code: code.value
+                })
                     .then((response) => {
                         if (response.data.length > 0) {
                             let student = response.data[0];
