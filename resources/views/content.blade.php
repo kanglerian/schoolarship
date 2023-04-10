@@ -18,52 +18,60 @@
 </head>
 
 <body class="bg-slate-100">
-    @if ($student !== null)
-        <div class="h-screen flex items-center justify-center">
-            <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
-                <div class="text-center mb-8 space-y-2">
-                    <a href="{{ route('schoolarship.index') }}"
-                        class="inline-block bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-lg mb-2" data-aos="fade-down"
-                        data-aos-delay="100"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
-                    <h1 class="font-bold text-2xl text-slate-900 mt-5" data-aos="fade-down" data-aos-delay="150">
-                        Selamat,
-                        anda telah mendapatkan beasiswa!</h1>
-                    <p class="text-slate-700" data-aos="fade-down" data-aos-delay="200">Download dan tukarkan voucher ini ke
-                        Politeknik
-                        LP3I Kampus Tasikmalaya.</p>
-                    <button onclick="download()" data-aos="fade-down" data-aos-delay="250" class="bg-emerald-500 text-white rounded-lg px-4 py-2 text-sm">Klik voucher untuk download <i class="fa-solid fa-arrow-down"></i></button>
-                </div>
-                <div id="my-node" onclick="download()" role="button" class="w-full shadow-lg rounded-lg">
-                    <div
-                        class="bg-white flex flex-col md:flex-row text-center md:text-left justify-between items-center p-5 rounded-t-lg">
-                        <div class="space-y-3">
-                            <img src="{{ asset('/img/lp3i.svg') }}" class="inline h-12">
-                            <h1 class="font-bold text-lg">Penerima Beasiswa</h1>
-                            <ul class="space-y-1">
-                                <li>{{ $student->name == '' ? 'Your full name' : $student->name }}</li>
-                                <li class="text-sm">{{ $student->school == '' ? 'Your school' : $student->school }}</li>
-                            </ul>
-                        </div>
-                        <div class="flex flex-col items-center gap-2">
-                            <input type="hidden" id="isian" value="{{ $student->code == '' ? '0000000001' : $student->code }}">
-                            <canvas id="canvas" class="h-28"></canvas>
-                            <p class="text-sm">{{ $student->code == '' ? '0000000001' : $student->code }}</p>
-                        </div>
-                    </div>
-                    <footer class="bg-red-500 text-white text-center text-[10px] py-1 px-2">
-                        <p>Kuota hanya untuk 30 orang pertama saja!</p>
-                    </footer>
-                    <footer class="bg-slate-800 text-white text-center text-[10px] px-5 py-1 rounded-b-lg">
-                        <div class="flex flex-col items-center">
-                            <p>Jl. Ir. H. Juanda No.106, Panglayungan, Kec. Cipedes Kota Tasikmalaya, Jawa Barat 46151</p>
-                            <p class="flex gap-2"><span>@lp3i.tasik</span> | <span>081313608558</span></p>
-                        </div>
-                    </footer>
+    {{-- @if ($student !== null) --}}
+    <div class="h-screen flex items-center justify-center">
+        <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
+            <div class="text-center mb-8 space-y-2">
+                <h1 class="font-bold text-2xl text-slate-900 mt-5" data-aos="fade-down" data-aos-delay="150">
+                    Selamat,
+                    anda telah mendapatkan beasiswa!</h1>
+                <p class="text-slate-700" data-aos="fade-down" data-aos-delay="200">Download dan tukarkan voucher ini ke
+                    Politeknik
+                    LP3I Kampus Tasikmalaya.</p>
+                <div class="space-x-2">
+                    <a href="https://pmb.politekniklp3i-tasikmalaya.ac.id/dashboard/form_pmb" data-aos="fade-down"
+                        data-aos-delay="250"
+                        class="inline-block bg-[#00426D] text-white rounded-lg px-4 py-2 text-sm">Daftar Online <i
+                            class="fa-solid fa-square-check mr-1"></i></a>
+                    <a href="https://forms.gle/KSbs6gjQpC86uCAK6" onclick="download()" data-aos="fade-down"
+                        data-aos-delay="250"
+                        class="inline-block bg-[#009DA5] text-white rounded-lg px-4 py-2 text-sm">Carter Kuota <i
+                            class="fa-regular fa-address-card"></i></a>
                 </div>
             </div>
+            <div id="my-node" onclick="download()" role="button" class="w-full shadow-lg rounded-lg">
+                <div
+                    class="bg-white flex flex-col md:flex-row text-center md:text-left justify-between items-center p-5 rounded-t-lg">
+                    <div class="space-y-3">
+                        <img src="{{ asset('/img/lp3i.svg') }}" class="inline h-12">
+                        <h1 class="font-bold text-lg text-[#00426D]">Penerima Beasiswa</h1>
+                        <ul class="space-y-1">
+                            <li class="text-xl font-bold">{{ $student->name == '' ? 'Your full name' : $student->name }}
+                            </li>
+                            <li class="text-sm">{{ $student->school == '' ? 'Your school' : $student->school }}</li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <input type="hidden" id="isian"
+                            value="{{ $student->code == '' ? '0000000001' : $student->code }}">
+                        <canvas id="canvas" class="h-28"></canvas>
+                        <p class="text-sm">{{ $student->code == '' ? '0000000001' : $student->code }}</p>
+                    </div>
+                </div>
+                <footer class="bg-red-500 text-white text-center text-[10px] py-1 px-2">
+                    <p>Kuota hanya untuk 30 orang pertama saja!</p>
+                </footer>
+                <footer class="bg-[#00426D] text-white text-center text-[10px] px-5 py-1 rounded-b-lg">
+                    <div class="flex flex-col items-center">
+                        <p>Jl. Ir. H. Juanda No.106, Panglayungan, Kec. Cipedes Kota Tasikmalaya, Jawa Barat 46151</p>
+                        <p class="flex gap-2"><span>@lp3i.tasik</span> | <span>081313608558</span></p>
+                    </div>
+                </footer>
+            </div>
         </div>
-    @else
-    <div class="h-screen flex items-center justify-center">
+    </div>
+    {{-- @else --}}
+    {{-- <div class="h-screen flex items-center justify-center">
         <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
             <div class="text-center mb-8 space-y-2">
                 <a href="{{ route('schoolarship.index') }}"
@@ -75,8 +83,8 @@
                 <a href="https://bit.ly/InfoPMBLP3ITasik" data-aos="fade-down" data-aos-delay="250" class="inline-block bg-emerald-500 text-white rounded-lg px-4 py-2 text-sm"><i class="fa-brands fa-whatsapp"></i> Hubungi kami!</a>
             </div>
         </div>
-    </div>
-    @endif
+    </div> --}}
+    {{-- @endif --}}
 
     <script src="{{ asset('js/dom-to-image.min.js') }}"></script>
     <script src="{{ asset('js/qrcode.js') }}"></script>
