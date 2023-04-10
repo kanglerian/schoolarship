@@ -24,10 +24,8 @@
             <div class="text-center mb-8 space-y-2">
                 <h1 class="font-bold text-2xl text-slate-900 mt-5" data-aos="fade-down" data-aos-delay="150">
                     Selamat,
-                    anda telah mendapatkan beasiswa!</h1>
-                <p class="text-slate-700" data-aos="fade-down" data-aos-delay="200">Download dan tukarkan voucher ini ke
-                    Politeknik
-                    LP3I Kampus Tasikmalaya.</p>
+                    Anda Telah Mendapatkan Beasiswa Pendidikan!</h1>
+                <p class="text-slate-700" data-aos="fade-down" data-aos-delay="200">Silahkan klik link di bawah ini untuk lanjut ke langkah berikutnya.</p>
                 <div class="space-x-2">
                     <a href="https://pmb.politekniklp3i-tasikmalaya.ac.id/dashboard/form_pmb" data-aos="fade-down"
                         data-aos-delay="250"
@@ -35,7 +33,7 @@
                             class="fa-solid fa-square-check mr-1"></i></a>
                     <a href="https://forms.gle/KSbs6gjQpC86uCAK6" onclick="download()" data-aos="fade-down"
                         data-aos-delay="250"
-                        class="inline-block bg-[#009DA5] text-white rounded-lg px-4 py-2 text-sm">Carter Kuota <i
+                        class="inline-block bg-[#009DA5] text-white rounded-lg px-4 py-2 text-sm">Klaim Beasiswa <i
                             class="fa-regular fa-address-card"></i></a>
                 </div>
             </div>
