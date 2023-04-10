@@ -18,7 +18,7 @@
 </head>
 
 <body class="bg-slate-100">
-    {{-- @if ($student !== null) --}}
+    @if ($student !== null)
     <div class="h-screen flex items-center justify-center">
         <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
             <div class="text-center mb-8 space-y-2">
@@ -70,8 +70,8 @@
             </div>
         </div>
     </div>
-    {{-- @else --}}
-    {{-- <div class="h-screen flex items-center justify-center">
+    @else
+    <div class="h-screen flex items-center justify-center">
         <div class="w-full md:w-2/5 p-5" data-aos="fade-down">
             <div class="text-center mb-8 space-y-2">
                 <a href="{{ route('schoolarship.index') }}"
@@ -83,8 +83,8 @@
                 <a href="https://bit.ly/InfoPMBLP3ITasik" data-aos="fade-down" data-aos-delay="250" class="inline-block bg-emerald-500 text-white rounded-lg px-4 py-2 text-sm"><i class="fa-brands fa-whatsapp"></i> Hubungi kami!</a>
             </div>
         </div>
-    </div> --}}
-    {{-- @endif --}}
+    </div>
+    @endif
 
     <script src="{{ asset('js/dom-to-image.min.js') }}"></script>
     <script src="{{ asset('js/qrcode.js') }}"></script>
