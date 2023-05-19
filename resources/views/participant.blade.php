@@ -108,7 +108,7 @@
                     },{
                       data: 'status',
                       render: (data, type, row) => {
-                        return data ? '<i class="fa-solid fa-circle-check text-teal-600"></i>' : '<i class="fa-solid fa-circle-xmark text-red-600"></i>'
+                        return data == '1' ? '<i class="fa-solid fa-circle-check text-teal-600"></i>' : '<i class="fa-solid fa-circle-xmark text-red-600"></i>'
                       }
                     }
                 ],
