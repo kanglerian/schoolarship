@@ -111,6 +111,8 @@ class ParticipantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Schoolarship::findOrFail($id);
+        $student->delete();
+        return redirect('dashboard')->with('message', 'Data siswa berhasil dihapus!');
     }
 }

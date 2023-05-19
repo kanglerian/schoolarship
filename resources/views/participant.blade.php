@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         table {
@@ -54,7 +55,7 @@
             <div>
                 <form action="{{ route('dashboard.add') }}" method="POST">
                     @csrf
-                    <div class="flex flex-col md:flex-row items-start gap-2 mb-3">
+                    <div class="flex flex-col md:flex-row items-start md:items-end gap-2 mb-3">
                         <div class="w-full flex flex-col">
                             <label class="text-sm mb-1">Nama Lengkap:</label>
                             <input type="text" name="name" placeholder="Tulis nama lengkap disini..."
@@ -79,24 +80,9 @@
                             <th class="px-6 py-2">Nama lengkap</th>
                             <th class="px-6 py-2">Sekolah</th>
                             <th class="px-6 py-2">Status</th>
-                            <th class="px-6 py-2">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="text-gray-700">
-                        {{-- @forelse ($students as $student)
-                            <tr class="bg-white border-b">
-                                <td class="px-6 py-2">{{ $student->code }}</td>
-                                <td class="px-6 py-2">{{ $student->name }}</td>
-                                <td class="px-6 py-2">{{ $student->school }}</td>
-                                <td class="px-6 py-2">{{ $student->status }}</td>
-                                <td class="px-6 py-2">50</td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="5">Data belum tersedia</td>
-                            </tr>
-                        @endforelse --}}
-                    </tbody>
+                    <tbody class="text-gray-700"></tbody>
                 </table>
             </div>
         </div>
@@ -119,9 +105,11 @@
                     },
                     {
                         data: 'school'
-                    },
-                    {
-                        data: 'status'
+                    },{
+                      data: 'status',
+                      render: (data, type, row) => {
+                        return data ? '<i class="fa-solid fa-circle-check text-teal-600"></i>' : '<i class="fa-solid fa-circle-xmark text-red-600"></i>'
+                      }
                     }
                 ],
             });
