@@ -44,12 +44,12 @@
                     Hasil</a>
             </div>
             <hr class="my-2 hidden">
-            <form action="{{ route('dashboard.store') }}" method="POST" enctype="multipart/form-data" class="hidden">
+            <form action="{{ route('dashboard.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="file" name="file" id="file"
                     class="border px-2 py-1 rounded-md text-gray-900 bg-gray-50 text-sm">
                 <button type="submit"
-                    class="bg-sky-500 hover:bg-sky-600 px-3 py-1 text-white rounded-md text-sm disabled">Upload</button>
+                    class="bg-sky-500 hover:bg-sky-600 px-3 py-1 text-white rounded-md text-sm">Upload</button>
             </form>
             <hr class="my-2">
             <div>

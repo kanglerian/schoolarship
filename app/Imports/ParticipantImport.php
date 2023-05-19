@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Schoolarship;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Facades\DB;
 
 class ParticipantImport implements ToModel
 {
@@ -14,10 +15,14 @@ class ParticipantImport implements ToModel
      */
     public function model(array $row)
     {
+        $lastCode = DB::table('schoolarship')
+        ->select(DB::raw('MAX(CAST(SUBSTRING(code, 1) AS UNSIGNED)) AS last_trx'))
+        ->value('last_trx');
+
         return new Schoolarship([
-            'code' => $row[0],
-            'name' => $row[1],
-            'school' => $row[2],
+            'code' => $lastCode + 1,
+            'name' => $row[0],
+            'school' => $row[1],
         ]);
     }
 }

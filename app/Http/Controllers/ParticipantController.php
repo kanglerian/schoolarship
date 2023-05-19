@@ -43,7 +43,7 @@ class ParticipantController extends Controller
     public function store(Request $request)
     {
         Excel::import(new ParticipantImport(), $request->file);
-        return redirect('participant');
+        return redirect('dashboard');
     }
 
     /**
