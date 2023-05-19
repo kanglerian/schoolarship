@@ -58,7 +58,7 @@ class ParticipantController extends Controller
         $lastCode = DB::table('schoolarship')
             ->select(DB::raw('MAX(CAST(SUBSTRING(code, 1) AS UNSIGNED)) AS last_trx'))
             ->value('last_trx');
-        $increment = $lastCode + 1;
+
         $data = [
             'code' => $lastCode + 1,
             'name' => $request->input('name'),
@@ -66,7 +66,7 @@ class ParticipantController extends Controller
             'status' => 0,
         ];
         Schoolarship::create($data);
-        return redirect('dashboard')->with('message', `Data siswa dengan kode ${increment} berhasil ditambahkan!`);
+        return redirect('dashboard')->with('message', `Data siswa berhasil ditambahkan!`);
     }
 
     /**
