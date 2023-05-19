@@ -66,7 +66,7 @@ class ParticipantController extends Controller
             'status' => 0,
         ];
         Schoolarship::create($data);
-        return redirect('dashboard')->with('message', `Data siswa berhasil ditambahkan!`);
+        return redirect('dashboard')->with('message', 'Data siswa berhasil ditambahkan!');
     }
 
     /**

@@ -56,6 +56,13 @@
                         <p class="text-sm">{{ $student->code == '' ? '0000000001' : $student->code }}</p>
                     </div>
                 </div>
+                <div class="bg-[#00426D] text-white text-left text-[10px] px-5 py-2">
+                    <ul class="flex flex-col md:flex-row items-center text-center md:text-left justify-center gap-2 md:gap-6">
+                        <li><i class="fa-regular fa-circle-dot"></i> Subsidi Biaya Pendidikan:<br><span class="font-bold text-base">Rp5.000.000</span></li>
+                        <li><i class="fa-regular fa-circle-dot"></i> Potongan Ranking 1 - 5:<br><span class="font-bold text-base">Total Rp3.500.000</span></li>
+                        <li><i class="fa-regular fa-circle-dot"></i> Potongan Biaya Pendaftaran:<br><span class="font-bold text-base">Rp100.000</span></li>
+                    </ul>
+                </div>
                 <footer class="bg-red-500 text-white text-center text-[10px] py-1 px-2">
                     <p>Kuota hanya untuk 30 orang pertama saja!</p>
                 </footer>
