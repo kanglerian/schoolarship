@@ -16,7 +16,11 @@ class SchoolarshipAPIController extends Controller
     public function index()
     {
         $students = Schoolarship::all();
-        return response()->json($students, 200);
+        // return response()->json($students, 200);
+
+        return response()->json([
+            'students' => $students,
+        ])->header('Content-Type', 'application/json');;
     }
 
     /**
@@ -48,7 +52,7 @@ class SchoolarshipAPIController extends Controller
      */
     public function show($code)
     {
-        $student = Schoolarship::where('code',$code)->get();
+        $student = Schoolarship::where('code', $code)->get();
         return response()->json($student, 200);
     }
 

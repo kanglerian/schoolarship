@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Imports\ParticipantImport;
 use App\Exports\ParticipantExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
+use App\Schoolarship;
 
 class ParticipantController extends Controller
 {
@@ -16,7 +18,10 @@ class ParticipantController extends Controller
      */
     public function index()
     {
-        return view('participant');
+        $students = Schoolarship::all();
+        return view('participant')->with([
+            'students' => $students,
+        ]);
     }
 
     /**
@@ -26,7 +31,7 @@ class ParticipantController extends Controller
      */
     public function create()
     {
-        return Excel::download(new ParticipantExport, 'result.xlsx');
+        return Excel::download(new ParticipantExport(), 'result.xlsx');
     }
 
     /**
@@ -37,8 +42,31 @@ class ParticipantController extends Controller
      */
     public function store(Request $request)
     {
-        Excel::import(new ParticipantImport, $request->file);
+        Excel::import(new ParticipantImport(), $request->file);
         return redirect('participant');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function add(Request $request)
+    {
+        $lastCode = DB::table('schoolarship')
+            ->select(DB::raw('MAX(CAST(SUBSTRING(code, 1) AS UNSIGNED)) AS last_trx'))
+            ->value('last_trx');
+
+        $data = [
+            'code' => $lastCode + 1,
+            'name' => $request->input('name'),
+            'school' => $request->input('school'),
+            'status' => 0,
+        ];
+        Schoolarship::create($data);
+        return redirect('dashboard')->with('message', 'Data siswa berhasil ditambahkan!');
     }
 
     /**
@@ -49,6 +77,7 @@ class ParticipantController extends Controller
      */
     public function show($code)
     {
+        
     }
 
     /**

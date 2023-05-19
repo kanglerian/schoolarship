@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ParticipantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'SchoolarshipController@index');
 
 Route::resource('schoolarship', 'SchoolarshipController');
-Route::resource('participant', 'ParticipantController');
+Route::resource('dashboard', 'ParticipantController');
+Route::post('/add', [ParticipantController::class, 'add'])->name('dashboard.add');
